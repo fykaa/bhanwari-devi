@@ -49,8 +49,30 @@ const PublicMenuOption = ({ leftDrawer, toggleDrawer, handleSearchChange }) => {
   });
 
   const menuCloseHandler = () => {
+    console.log("Close Menu");
+    console.log(indicator);
+    console.log(selectedMenu);
+    console.log(dropDownMenu);
+
     setIndicator(null);
   };
+
+  //------Changes in ninad Branch
+  const [isShown, setIsShown] = useState(false);
+
+  const onMouseEnter = (e, menu) => {
+    console.log(window.innerWidth);
+    console.log("Mouse In");
+    menuOpenHandler(e, menu);
+  };
+
+  const onMouseLeave = (e) => {
+    console.log(e);
+    console.log(window.innerWidth);
+    console.log("Mouse Leave");
+    menuCloseHandler();
+  };
+  //------Changes in ninad Branch
 
   return (
     <>
@@ -59,8 +81,24 @@ const PublicMenuOption = ({ leftDrawer, toggleDrawer, handleSearchChange }) => {
           <>
             <MenuItem
               onClick={(e) => {
+                console.log("Menu clicked");
                 menuOpenHandler(e, menu);
               }}
+              // onMouseEnter={(e)=>{
+              //   console.log("Mouse enter");
+              //   setIsShown(true);
+              //   menuOpenHandler(e, menu);
+              // }}
+              // onMouseLeave={(e)=>{
+              //   if(isShown)
+              //   console.log("Mouse Leave");
+              // }}
+              // onMouseOut={(e)=>{
+              //   console.log("Mouse Out");
+
+              // }}
+              onMouseEnter={(e) => onMouseEnter(e, menu)}
+              // onMouseLeave={(e)=>onMouseLeave(e)}
               sx={{ color: "black" }}
               key={index}
             >
@@ -76,6 +114,7 @@ const PublicMenuOption = ({ leftDrawer, toggleDrawer, handleSearchChange }) => {
               indicator={indicator}
               handleClose={menuCloseHandler}
               toggleDrawer={toggleDrawer}
+              onMouseLeave={onMouseLeave}
             />
           </>
         ))}
