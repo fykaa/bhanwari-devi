@@ -50,9 +50,9 @@ const PublicMenuOption = ({ leftDrawer, toggleDrawer, handleSearchChange }) => {
 
   const menuCloseHandler = () => {
     console.log("Close Menu");
-    console.log(indicator);
-    console.log(selectedMenu);
-    console.log(dropDownMenu);
+    // console.log(indicator);
+    // console.log(selectedMenu);
+    // console.log(dropDownMenu);
 
     setIndicator(null);
   };
@@ -61,16 +61,18 @@ const PublicMenuOption = ({ leftDrawer, toggleDrawer, handleSearchChange }) => {
   const [isShown, setIsShown] = useState(false);
 
   const onMouseEnter = (e, menu) => {
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
     console.log("Mouse In");
     menuOpenHandler(e, menu);
   };
 
   const onMouseLeave = (e) => {
     console.log(e);
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
     console.log("Mouse Leave");
-    menuCloseHandler();
+    setTimeout(() => {
+      menuCloseHandler();
+    }, 300);
   };
   //------Changes in ninad Branch
 
@@ -80,6 +82,7 @@ const PublicMenuOption = ({ leftDrawer, toggleDrawer, handleSearchChange }) => {
         {["Learn", "About", "Get Involved"].map((menu, index) => (
           <>
             <MenuItem
+              className={classes.crossIcon}
               onClick={(e) => {
                 console.log("Menu clicked");
                 menuOpenHandler(e, menu);
@@ -97,8 +100,9 @@ const PublicMenuOption = ({ leftDrawer, toggleDrawer, handleSearchChange }) => {
               //   console.log("Mouse Out");
 
               // }}
-              onMouseEnter={(e) => onMouseEnter(e, menu)}
-              // onMouseLeave={(e)=>onMouseLeave(e)}
+              onMouseOver={(e) => onMouseEnter(e, menu)}
+              onMouseLeave={onMouseLeave}
+              //  onMouseLeave={(e)=>onMouseLeave(e)}
               sx={{ color: "black" }}
               key={index}
             >
@@ -110,6 +114,7 @@ const PublicMenuOption = ({ leftDrawer, toggleDrawer, handleSearchChange }) => {
               )}
             </MenuItem>
             <DropDown
+              className="navigation-content"
               dropDown={dropDownMenu}
               indicator={indicator}
               handleClose={menuCloseHandler}

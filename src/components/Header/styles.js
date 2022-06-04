@@ -1,4 +1,5 @@
 import { makeStyles } from "@mui/styles";
+import { style } from "@mui/system";
 
 const useStyles = makeStyles((theme) => ({
   link: {
@@ -36,6 +37,12 @@ const useStyles = makeStyles((theme) => ({
   },
   active: {
     color: "#48a145",
+  },
+  navigation: {
+    background: "#de2c2c",
+    "&:hover": {
+      background: "#f00",
+    },
   },
 }));
 

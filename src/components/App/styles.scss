@@ -15,3 +15,31 @@ body {
 .content {
   flex-grow: 2;
 }
+
+.navigation {
+  position: relative;
+  display: inline-block;
+}
+.navigation-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.navigation a {
+  color: black;
+  padding: 12px;
+  margin: 0;
+  text-decoration: none;
+  display: block;
+}
+.navigation a:hover {
+  background-color: #ddd;
+  border-radius: 4px;
+}
+.navigation:hover .navigation-content {
+  display: block;
+}
