@@ -153,7 +153,7 @@ function ClassCard({ item, editClass }) {
           headers: {
             "Content-Type": "application/json",
             Authorization: user.data.token,
-            "register-all": indicator,
+            "register-to-all": indicator,
           },
         }
       )
@@ -338,7 +338,16 @@ function ClassCard({ item, editClass }) {
                 </div>
               ) : (
                 // <h1>Poonam</h1>
-                <EnrolledAndTimer item={item} />
+                // <EnrolledAndTimer item={item} />
+                <button
+                  type="submit"
+                  className="class-drop-out"
+                  onClick={() => {
+                    handleClickOpenUnenroll(item.id);
+                  }}
+                >
+                  Drop out
+                </button>
               )
             ) : loading ? (
               <div className="loader-button">
