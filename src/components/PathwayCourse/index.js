@@ -188,7 +188,12 @@ function PathwayCourse() {
                     >
                       <img
                         className={classes.courseImage}
-                        src={item.logo}
+                        src={
+                          item.logo.length > 5
+                            ? item.logo
+                            : item.logo +
+                              "://media.istockphoto.com/vectors/modern-computer-cartoon-vector-id862739386"
+                        }
                         alt="course"
                       />
                       <div className={classes.courseTitleNumber} disableGutters>
